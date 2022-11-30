@@ -1,0 +1,19 @@
+db.artigos.insertOne({
+    autor:{
+        nome: "Yuri Matheus",
+        descricao: "Instrutor na Alura",
+        email: "yuri@alura.com.br",
+        senha: "senha",
+
+    },
+      
+slug:"visualizando-dados-de-frequencia",
+titulo:"Visualizando dados de frequência",
+conteudo: "Precisamos saber o total de acessos em um dia, ou seja, temos que pega…",
+dataCriado: ISODate('2022-11-29')
+
+})
+
+db.artigos.find({slug: "visualizando-dados-de-frequencia"})
+
+

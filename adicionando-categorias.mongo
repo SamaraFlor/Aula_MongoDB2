@@ -1,0 +1,9 @@
+db.artigos.updateOne({
+    slug: 
+    "Visualizando dados de frequência"
+  },{
+    $set:{
+        categorias : ["inovação"]
+    }
+  
+})

@@ -1,0 +1,26 @@
+db.artigos.update({
+    slug: "visualizando-dados-de-frequencia"
+},{
+    $pop:{
+        comentarios:1
+    }
+})
+
+db.artigos.update({
+    slug: "visualizando-dados-de-frequencia"
+}, {
+    $push:{
+        comentarios:{
+            $each:[
+                {
+                    nome: "Samara",
+                    email: "samara@email.com",
+                    texto: "Artigo legal",
+                    data: ISODate('2022-11-30')
+                }
+            ],
+
+            $position: 0
+        }
+    }
+})

@@ -1,0 +1,51 @@
+db.infoAutores.insertOne({
+    nome:"Carlos Cabra",
+    email:"carlos@rmail.com",
+    senha: "senha1234",
+    descricao: "Professor de culinaria"
+})
+
+var autorInfo = db.infoAutores.findOne({
+    email:"carlos@rmail.com",
+})
+
+db.artigos.insertOne({
+    autor:{
+        nome: autorInfo.nome,
+        descricao: autorInfo.descricao,
+        _idInfo: autorInfo._id
+    },
+    slug: "Dicas-politica-de-senha",
+    titulo:"Algumas dicas importantes de politicas de senha",
+    conteudo: "sobre politiocas de senha e necessariooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+    dataCriado: ISODate('2022-11-30'),
+    categorias:[
+        'arquitetura',
+        'programação'
+    ],
+    comentarios:[]
+})
+
+db.artigos.findOneAndUpdate({
+    slug:"Dicas-politica-de-senha",
+
+},{
+    $push:{
+        comentario:{
+            $each: [
+                {
+                    nome:"Samara",
+                    email: "samara23@rmail",
+                    texto: "achei muito ruim",
+                    ISODate('2022-11-30')
+
+                }
+            ],
+            $position: 0
+        }
+    }
+}, {returnNewDocument: true})
+
+db.comentarios.insertOne({
+   id_artigo:documento._id
+})
